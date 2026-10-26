@@ -54,19 +54,36 @@ AI coding tools generated substantial portions of the implementation. My contrib
 | Automated testing | Node.js built-in test runner |
 
 ## Run and Test
+
 Requires **Node.js 22.13 or newer**. There are no external runtime dependencies.
+
+### Local Environment
 
 From the project folder, run:
 
-    npm start
+```sh
+npm start
+```
 
 Open http://localhost:4173.
 
-To run the automated tests:
+### GitHub Codespaces
 
-    npm test
+Create a Codespace from this repository, then run:
 
-The packaged version passed all 24 tests during verification on October 26, 2026. Coverage includes authentication, account isolation, goal rules, date handling, and analysis logic.
+```sh
+HOST=0.0.0.0 npm start
+```
+
+In the **Ports** tab, open port **4173** in the browser.
+
+### Automated Tests
+
+```sh
+npm test
+```
+
+The updated version passed all 26 tests during local verification on October 26, 2026. Coverage includes authentication, account isolation, goal rules, date handling, analysis logic, and Codespaces origin validation.
 
 GitHub Pages cannot run the Node.js/SQLite backend. Use a local Node.js environment, Codespaces, or a suitable Node.js host. See [DEPLOYMENT.md](DEPLOYMENT.md) for hosting configuration.
 
