@@ -1,3 +1,4 @@
+import { requestOriginAllowed } from "./origin.js";
 import { validDate, dateInZone } from "./public/dates.js";
 import { unfinishedGoal } from "./public/goal-cycle.js";
 import { sessionUser, authenticate, logout, authRateAllowed } from "./auth.js";
@@ -70,7 +71,8 @@ const server = http.createServer(async (req, res) => {
       try { currentDate = dateInZone(timeZone); }
       catch { throw new RequestError('Invalid timezone'); }
       const expectedOrigin = publicOrigin || `http://${req.headers.host}`;
-      if (req.headers.origin !== expectedOrigin) return reply(403, { error: "Origin rejected" });
+      if (!requestOriginAllowed(req.headers, { expectedOrigin, codespaceOrigin: cloudOrigin, port }))
+        return reply(403, { error: "Origin rejected" });
       if (authRoute && !authRateAllowed(req.socket.remoteAddress)) {
         return reply(429, { error: "Too many attempts. Try again in 15 minutes." });
       }
