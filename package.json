@@ -1,0 +1,14 @@
+{
+  "name": "patternly",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test ./*.test.js",
+    "seed:demo": "node scripts/seed-demo.js",
+    "create:admin": "node scripts/create-admin.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}
